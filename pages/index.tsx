@@ -1,8 +1,9 @@
-const Home: React.FC = () => {
+import { Layout } from '../components/Layout'
+const Home = (): JSX.Element => {
   return (
-    <div className="flex justify-center items-center flex-col min-h-screen font-mono">
-      Hello Nextjs
-    </div>
+    <Layout title="Home">
+      <p className="text-3xl font-bold">Next.js + GraphQL</p>
+    </Layout>
   )
 }
 export default Home

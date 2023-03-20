@@ -32,5 +32,14 @@
     "jest-css-modules": "^2.1.0",
     "msw": "^1.1.0",
     "next-page-tester": "^0.33.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   }
 }

@@ -11,7 +11,7 @@
     "gen-types": "graphql-codegen --config codegen.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=61ab02fb9771"
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
     "@apollo/client": "^3.7.10",

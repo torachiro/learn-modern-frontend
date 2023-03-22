@@ -1,3 +1,6 @@
+[![CI](https://github.com/torachiro/learn-modern-frontend/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/torachiro/learn-modern-frontend/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/torachiro/learn-modern-frontend/branch/main/graph/badge.svg?token=4RDU5SBUQ3)](https://codecov.io/gh/torachiro/learn-modern-frontend)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

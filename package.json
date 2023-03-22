@@ -10,7 +10,8 @@
     "test": "jest --env=jsdom --verbose",
     "gen-types": "graphql-codegen --config codegen.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=61ab02fb9771"
   },
   "dependencies": {
     "@apollo/client": "^3.7.10",
@@ -65,5 +66,7 @@
     "moduleNameMapper": {
       "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
     }
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "learn-modern-frontend@0.1.0"
 }

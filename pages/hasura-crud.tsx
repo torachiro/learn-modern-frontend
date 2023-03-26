@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react'
+import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { useQuery, useMutation } from '@apollo/client'
 import {
   GET_USERS,
@@ -14,39 +18,142 @@ import {
 } from '../types/generated/graphql'
 import { Layout } from '../components/Layout'
 
+const schema = z.object({
+  editedUserName: z.string().min(1, { message: '※入力必須の項目です。' }),
+})
+type Schema = z.infer<typeof schema>
+
+type EditedUser = {
+  id: string
+  name: string
+}
+
 const HasuraCRUD = (): JSX.Element => {
+  const [editedUser, setEditedUser] = useState<EditedUser>({ id: '', name: '' })
+  const {
+    register,
+    watch,
+    setValue,
+    handleSubmit,
+    formState: { isDirty, errors },
+  } = useForm<Schema>({
+    defaultValues: { editedUserName: '' },
+    resolver: zodResolver(schema),
+  })
+
   const { data, error } = useQuery<GetUsersQuery>(GET_USERS, {
     fetchPolicy: 'cache-and-network',
   })
   const [update_users_by_pk] = useMutation<UpdateUserMutation>(UPDATE_USER)
   const [insert_users_one] = useMutation<CreateUserMutation>(CREATE_USER, {
-    update(cache, { data: { insert_users_one } }) {
-      const cacheId = cache.identify(insert_users_one)
-      cache.modify({
-        fields: {
-          users(existingUsers, { toReference }) {
-            return [toReference(cacheId), ...existingUsers]
-          },
-        },
-      })
+    update(cache, { data }) {
+      if (data?.insert_users_one) {
+        const cacheId: string | undefined = cache.identify(
+          data.insert_users_one
+        )
+        if (cacheId) {
+          cache.modify({
+            fields: {
+              users(existingUsers, { toReference }) {
+                return [toReference(cacheId), ...existingUsers]
+              },
+            },
+          })
+        }
+      }
     },
   })
   const [delete_users_by_pk] = useMutation<DeleteUserMutation>(DELETE_USER, {
-    update(cache, { data: { delete_users_by_pk } }) {
-      cache.modify({
-        fields: {
-          users(existingUsers, { readField }) {
-            return existingUsers.filter(
-              (user) => delete_users_by_pk.id !== readField('id', user)
-            )
+    update(cache, { data }) {
+      if (data) {
+        cache.modify({
+          fields: {
+            users(existingUsers, { readField }) {
+              return existingUsers.filter(
+                (user: EditedUser) =>
+                  data.delete_users_by_pk?.id !== readField('id', user)
+              )
+            },
           },
-        },
-      })
+        })
+      }
     },
   })
+
+  const onSubmit: SubmitHandler<Schema> = async (data, e) => {
+    if (editedUser.id) {
+      try {
+        await update_users_by_pk({
+          variables: {
+            id: editedUser.id,
+            name: editedUser.name,
+          },
+        })
+      } catch (err) {
+        if (error instanceof Error) {
+          console.log(error.message)
+        }
+      }
+      setEditedUser({ id: '', name: '' })
+      setValue('editedUserName', '')
+    } else {
+      try {
+        await insert_users_one({
+          variables: {
+            name: editedUser.name,
+          },
+        })
+      } catch (err) {
+        if (error instanceof Error) {
+          console.log(error.message)
+        }
+      }
+      setEditedUser({ id: '', name: '' })
+      setValue('editedUserName', '')
+    }
+  }
+
+  const onError: SubmitErrorHandler<Schema> = (errors, e) => {
+    //console.log(errors, e)
+  }
+
+  // const editedUserNameValue = watch('editedUserName')
+  // console.log('editedUserNameValue', editedUserNameValue)
+  useEffect(() => {
+    const subscription = watch((value, { name, type }) => {
+      if (
+        name === 'editedUserName' &&
+        value?.editedUserName &&
+        value?.editedUserName !== editedUser.name
+      ) {
+        setEditedUser({ ...editedUser, name: value.editedUserName })
+      }
+      console.log(value, name, type)
+    })
+    return () => subscription.unsubscribe()
+  }, [watch, editedUser])
+
   return (
     <Layout title="Hasura CRUD">
       <p className="mb-3 font-bold">Hasura CRUD</p>
+      <form
+        className="flex flex-col justify-center items-center"
+        onSubmit={handleSubmit(onSubmit, onError)}
+      >
+        <input
+          className="px-3 py-2 border border-gray-300"
+          placeholder="New user ?"
+          {...register('editedUserName')}
+        />
+        <button
+          disabled={!editedUser.name}
+          className="disabled:opacity-40 my-3 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-2xl focus:outline-none"
+          data-testid="new"
+          type="submit"
+        >
+          {editedUser.id ? 'Update' : 'Create'}
+        </button>
+      </form>
     </Layout>
   )
 }

@@ -92,8 +92,8 @@ const HasuraCRUD = (): JSX.Element => {
           },
         })
       } catch (err) {
-        if (error instanceof Error) {
-          console.log(error.message)
+        if (err instanceof Error) {
+          console.log(err.message)
         }
       }
       setEditedUser({ id: '', name: '' })
@@ -106,8 +106,8 @@ const HasuraCRUD = (): JSX.Element => {
           },
         })
       } catch (err) {
-        if (error instanceof Error) {
-          console.log(error.message)
+        if (err instanceof Error) {
+          console.log(err.message)
         }
       }
       setEditedUser({ id: '', name: '' })

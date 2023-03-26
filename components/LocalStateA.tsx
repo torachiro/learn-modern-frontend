@@ -8,12 +8,8 @@ import Link from 'next/link'
 const schema = z.object({
   title: z.string().min(1, { message: '※入力必須の項目です。' }),
 })
-
 type Schema = z.infer<typeof schema>
 
-type FormValues = {
-  title: string
-}
 export const LocalStateA = (): JSX.Element => {
   const {
     register,
@@ -25,13 +21,13 @@ export const LocalStateA = (): JSX.Element => {
   })
   const todos = useReactiveVar(todoVar)
 
-  const onSubmit: SubmitHandler<FormValues> = ({ title }, e) => {
+  const onSubmit: SubmitHandler<Schema> = ({ title }, e) => {
     todoVar([...todoVar(), { title }])
-    e.target.reset()
+    e?.target.reset()
   }
 
-  const onError: SubmitErrorHandler<FormValues> = (errors, e) => {
-    console.log(errors, e)
+  const onError: SubmitErrorHandler<Schema> = (errors, e) => {
+    //console.log(errors, e)
   }
 
   return (

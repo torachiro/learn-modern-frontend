@@ -15,8 +15,10 @@ import {
   CreateUserMutation,
   DeleteUserMutation,
   UpdateUserMutation,
+  Mutation_RootDelete_Users_By_PkArgs,
 } from '../types/generated/graphql'
 import { Layout } from '../components/Layout'
+import { UserItem } from '../components/UserItem'
 
 const schema = z.object({
   editedUserName: z.string().min(1, { message: '※入力必須の項目です。' }),
@@ -154,6 +156,20 @@ const HasuraCRUD = (): JSX.Element => {
           {editedUser.id ? 'Update' : 'Create'}
         </button>
       </form>
+
+      {data?.users.map((user) => {
+        return (
+          <UserItem
+            key={user.id}
+            user={user}
+            setEditedUser={setEditedUser}
+            delete_users_by_pk={delete_users_by_pk}
+            // delete_users_by_pk={(v: {
+            //   variables: Mutation_RootDelete_Users_By_PkArgs
+            // }) => delete_users_by_pk(v)}
+          />
+        )
+      })}
     </Layout>
   )
 }

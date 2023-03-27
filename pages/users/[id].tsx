@@ -20,13 +20,21 @@ const UserDetail = ({ user }: Props): JSX.Element => {
   if (!user) return <Layout title="loading">Loading...</Layout>
   return (
     <Layout title={user.name}>
-      <p className="text-xl font-bold">User detail</p>
-      <p className="m-4">
-        {'ID : '}
-        {user.id}
-      </p>
-      <p className="mb-4 text-xl font-bold">{user.name}</p>
-      <p className="mb-12">{user.created_at}</p>
+      <h1 className="mb-8 text-3xl font-bold">User Detail</h1>
+      <table className="text-left">
+        <tr>
+          <th className="px-6 py-3">ID</th>
+          <td>{user.id}</td>
+        </tr>
+        <tr>
+          <th className="px-6 py-3">name</th>
+          <td>{user.name}</td>
+        </tr>
+        <tr>
+          <th className="px-6 py-3">created_at</th>
+          <td>{user.created_at}</td>
+        </tr>
+      </table>
       <Link href="/hasura-ssg">
         <div className="flex cursor-pointer mt-12">
           <ChevronDoubleLeftIcon
@@ -34,7 +42,7 @@ const UserDetail = ({ user }: Props): JSX.Element => {
             className="h-5 w-5 mr-3 text-blue-500"
           />
           <span data-testid="back-to-main" className="cursor-pointer">
-            Back to main-ssg-page
+            Back
           </span>
         </div>
       </Link>

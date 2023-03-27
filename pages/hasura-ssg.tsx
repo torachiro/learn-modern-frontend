@@ -4,6 +4,7 @@ import { initializeApollo } from '../lib/apolloClient'
 import { GET_USERS } from '../queries/queries'
 import { GetUsersQuery, Users } from '../types/generated/graphql'
 import { Layout } from '../components/Layout'
+import { ChevronDoubleRightIcon } from '@heroicons/react/24/solid'
 
 type Props = {
   users: {
@@ -14,12 +15,15 @@ type Props = {
 const HasuraSSG = ({ users }: Props): JSX.Element => {
   return (
     <Layout title="Hasura SSG">
-      <p className="mb-3 font-bold">SSG+ISR</p>
+      <h1 className="mb-8 text-3xl font-bold">Hasura SSG + ISR</h1>
       {users.map((user) => {
         return (
           <Link key={user.id} href={`/users/${user.id}`}>
-            <a className="my-1" data-testid={`link-${user.id}`}>
-              {user.name}
+            <a className="my-2" data-testid={`link-${user.id}`}>
+              <div className="flex">
+                <ChevronDoubleRightIcon className="h-5 w-5 mr-3 text-blue-500" />
+                {user.name}
+              </div>
             </a>
           </Link>
         )

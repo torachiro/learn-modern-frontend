@@ -19,10 +19,12 @@ const FetchSub = (): JSX.Element => {
         )
       })}
       <Link href="/hasura-main">
-        <div className="flex cursor-pointer mt-12">
-          <ChevronDoubleLeftIcon className="h-5 w-5 mr-3 text-blue-500" />
-          <span className="cursor-pointer">Back</span>
-        </div>
+        <a className="mt-12">
+          <div className="flex">
+            <ChevronDoubleLeftIcon className="h-5 w-5 mr-3 text-blue-500" />
+            Back
+          </div>
+        </a>
       </Link>
     </Layout>
   )

@@ -1,6 +1,7 @@
 import { todoVar } from '../cache'
 import { useReactiveVar } from '@apollo/client'
 import Link from 'next/link'
+import { ChevronDoubleLeftIcon } from '@heroicons/react/24/solid'
 
 export const LocalStateB = (): JSX.Element => {
   const todos = useReactiveVar(todoVar)
@@ -14,7 +15,15 @@ export const LocalStateB = (): JSX.Element => {
         )
       })}
       <Link href="/local-state-a">
-        <a>Back</a>
+        <div className="flex ≈ mt-12">
+          <ChevronDoubleLeftIcon
+            data-testid="auth-to-main"
+            className="h-5 w-5 mr-3 text-blue-500"
+          />
+          <span data-testid="back-to-main" className="cursor-pointer">
+            Back
+          </span>
+        </div>
       </Link>
     </>
   )

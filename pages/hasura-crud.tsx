@@ -137,39 +137,42 @@ const HasuraCRUD = (): JSX.Element => {
 
   return (
     <Layout title="Hasura CRUD">
-      <p className="mb-3 font-bold">Hasura CRUD</p>
+      <h1 className="mb-8 text-3xl font-bold">Hasura CRUD</h1>
       <form
         className="flex flex-col justify-center items-center"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <input
-          className="px-3 py-2 border border-gray-300"
-          placeholder="New user ?"
-          {...register('editedUserName')}
-        />
-        <button
-          disabled={!editedUser.name}
-          className="disabled:opacity-40 my-3 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-2xl focus:outline-none"
-          data-testid="new"
-          type="submit"
-        >
-          {editedUser.id ? 'Update' : 'Create'}
-        </button>
-      </form>
-
-      {data?.users.map((user) => {
-        return (
-          <UserItem
-            key={user.id}
-            user={user}
-            setEditedUser={setEditedUser}
-            delete_users_by_pk={delete_users_by_pk}
-            // delete_users_by_pk={(v: {
-            //   variables: Mutation_RootDelete_Users_By_PkArgs
-            // }) => delete_users_by_pk(v)}
+        <div className="flex">
+          <input
+            className="mb-6 px-3 py-2 border border-gray-300"
+            placeholder="new user ?"
+            {...register('editedUserName')}
           />
-        )
-      })}
+          <button
+            disabled={!editedUser.name}
+            className="disabled:opacity-40 mb-6 my-3 ml-2 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-2xl focus:outline-none"
+            data-testid="new"
+            type="submit"
+          >
+            {editedUser.id ? 'Update' : 'Create'}
+          </button>
+        </div>
+      </form>
+      <table>
+        {data?.users.map((user) => {
+          return (
+            <UserItem
+              key={user.id}
+              user={user}
+              setEditedUser={setEditedUser}
+              delete_users_by_pk={delete_users_by_pk}
+              // delete_users_by_pk={(v: {
+              //   variables: Mutation_RootDelete_Users_By_PkArgs
+              // }) => delete_users_by_pk(v)}
+            />
+          )
+        })}
+      </table>
     </Layout>
   )
 }

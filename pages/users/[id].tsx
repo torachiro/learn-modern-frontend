@@ -22,18 +22,20 @@ const UserDetail = ({ user }: Props): JSX.Element => {
     <Layout title={user.name}>
       <h1 className="mb-8 text-3xl font-bold">User Detail</h1>
       <table className="text-left">
-        <tr>
-          <th className="px-6 py-3">ID</th>
-          <td>{user.id}</td>
-        </tr>
-        <tr>
-          <th className="px-6 py-3">name</th>
-          <td>{user.name}</td>
-        </tr>
-        <tr>
-          <th className="px-6 py-3">created_at</th>
-          <td>{user.created_at}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th className="px-6 py-3">ID</th>
+            <td>{user.id}</td>
+          </tr>
+          <tr>
+            <th className="px-6 py-3">name</th>
+            <td>{user.name}</td>
+          </tr>
+          <tr>
+            <th className="px-6 py-3">created_at</th>
+            <td>{user.created_at}</td>
+          </tr>
+        </tbody>
       </table>
       <Link href="/hasura-ssg">
         <a className="mt-12">

@@ -28,7 +28,7 @@ const UserDetail = ({ user }: Props): JSX.Element => {
       <p className="mb-4 text-xl font-bold">{user.name}</p>
       <p className="mb-12">{user.created_at}</p>
       <Link href="/hasura-ssg">
-        <div className="flex ≈ mt-12">
+        <div className="flex cursor-pointer mt-12">
           <ChevronDoubleLeftIcon
             data-testid="auth-to-main"
             className="h-5 w-5 mr-3 text-blue-500"

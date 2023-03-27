@@ -15,7 +15,7 @@ export const LocalStateB = (): JSX.Element => {
         )
       })}
       <Link href="/local-state-a">
-        <div className="flex ≈ mt-12">
+        <div className="flex cursor-pointer mt-12">
           <ChevronDoubleLeftIcon className="h-5 w-5 mr-3 text-blue-500" />
           <span className="cursor-pointer">Back</span>
         </div>

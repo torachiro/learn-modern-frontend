@@ -72,9 +72,7 @@ export const LocalStateA = (): JSX.Element => {
               data-testid="auth-to-main"
               className="h-5 w-5 mr-3 text-blue-500"
             />
-            <span data-testid="back-to-main" className="cursor-pointer">
-              Next
-            </span>
+            <span className="cursor-pointer">Next</span>
           </div>
         </Link>
       </form>

@@ -20,9 +20,7 @@ export const LocalStateB = (): JSX.Element => {
             data-testid="auth-to-main"
             className="h-5 w-5 mr-3 text-blue-500"
           />
-          <span data-testid="back-to-main" className="cursor-pointer">
-            Back
-          </span>
+          <span className="cursor-pointer">Back</span>
         </div>
       </Link>
     </>

@@ -4,5 +4,5 @@ import Home from '../pages/index'
 
 it('Should render hello text', () => {
   render(<Home />)
-  expect(screen.getByText('Next.js + GraphQL')).toBeInTheDocument()
+  expect(screen.getByText('Learn Modern Frontend')).toBeInTheDocument()
 })

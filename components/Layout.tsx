@@ -13,7 +13,7 @@ export const Layout = ({
   title = 'Welcome to Next.js',
 }: Props): JSX.Element => {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen text-gray-600 text-sm font-mono">
+    <div className="flex flex-col justify-center items-center min-h-screen text-gray-600 text-sm font-noto">
       <Head>
         <title> {title} </title>
       </Head>

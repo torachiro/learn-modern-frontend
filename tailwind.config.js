@@ -6,7 +6,11 @@ module.exports = {
   ],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        noto: ['Noto Sans JP', 'sans-serif'],
+      },
+    },
   },
   variants: {
     extend: { opacity: ['disabled'] },

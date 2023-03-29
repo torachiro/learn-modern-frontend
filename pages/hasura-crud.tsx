@@ -137,7 +137,7 @@ const HasuraCRUD = (): JSX.Element => {
 
   return (
     <Layout title="Hasura CRUD">
-      <h1 className="mb-8 text-3xl font-bold">Hasura CRUD</h1>
+      <h1 className="mb-8 text-3xl font-bold text-primary">Hasura CRUD</h1>
       <form
         className="flex flex-col justify-center items-center"
         onSubmit={handleSubmit(onSubmit, onError)}

@@ -15,7 +15,7 @@ type Props = {
 const HasuraSSG = ({ users }: Props): JSX.Element => {
   return (
     <Layout title="Hasura SSG">
-      <h1 className="mb-8 text-3xl font-bold">Hasura SSG + ISR</h1>
+      <h1 className="mb-8 text-3xl font-bold text-primary">Hasura SSG + ISR</h1>
       {users.map((user) => {
         return (
           <Link key={user.id} href={`/users/${user.id}`}>

@@ -21,7 +21,7 @@ const FetchMain = (): JSX.Element => {
     )
   return (
     <Layout title="Hasura fetchPolicy">
-      <h1 className="mb-2 text-3xl font-bold">Hasura Main Page</h1>
+      <h1 className="mb-2 text-3xl font-bold text-primary">Hasura Main Page</h1>
       <p className="mb-6 font-bold">Hasura / Fetch Policy</p>
       {/* {console.log(data)} */}
       {data?.users.map((user) => {

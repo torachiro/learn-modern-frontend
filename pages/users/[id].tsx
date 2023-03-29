@@ -20,7 +20,7 @@ const UserDetail = ({ user }: Props): JSX.Element => {
   if (!user) return <Layout title="loading">Loading...</Layout>
   return (
     <Layout title={user.name}>
-      <h1 className="mb-8 text-3xl font-bold">User Detail</h1>
+      <h1 className="mb-8 text-3xl font-bold text-primary">User Detail</h1>
       <table className="text-left">
         <tbody>
           <tr>

@@ -18,36 +18,36 @@ export const Layout = ({
         <title> {title} </title>
       </Head>
       <header>
-        <nav className="bg-gray-800 w-screen">
+        <nav className="bg-element w-screen">
           <div className="flex items-center pl-8 h-14">
             <div className="flex space-x-4">
               <Link href="/">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="text-white hover:bg-accent px-3 py-2 rounded">
                   Home
                 </a>
               </Link>
               <Link href="/local-state-a">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="text-white hover:bg-accent px-3 py-2 rounded">
                   Local State
                 </a>
               </Link>
               <Link href="/hasura-main">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="text-white hover:bg-accent px-3 py-2 rounded">
                   Fetch Policy
                 </a>
               </Link>
               <Link href="/hasura-crud">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="text-white hover:bg-accent px-3 py-2 rounded">
                   CRUD
                 </a>
               </Link>
               <Link href="/hasura-ssg">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="text-white hover:bg-accent px-3 py-2 rounded">
                   SSG ISR
                 </a>
               </Link>
               <Link href="/hooks-memo">
-                <a className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
+                <a className="text-white hover:bg-accent px-3 py-2 rounded">
                   Custom Hook
                 </a>
               </Link>

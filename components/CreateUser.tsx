@@ -13,7 +13,7 @@ export const CreateUser = (): JSX.Element => {
   return (
     <>
       {console.log('CreateUser rendered')}
-      <h1 className="mb-8 text-3xl font-bold">
+      <h1 className="mb-8 text-3xl font-bold text-primary">
         Custom Hook + useCallback + memo
       </h1>
       <div className="mb-3 flex flex-col justify-center items-center">

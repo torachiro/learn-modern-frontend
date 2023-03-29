@@ -9,7 +9,7 @@ const FetchSub = (): JSX.Element => {
   const { data, error } = useQuery<GetUsersQuery>(GET_USER_LOCAL)
   return (
     <Layout title="Hasura fetchPolicy read cache">
-      <h1 className="mb-2 text-3xl font-bold">Hasura Sub Page</h1>
+      <h1 className="mb-2 text-3xl font-bold text-primary">Hasura Sub Page</h1>
       <p className="mb-6 font-bold">Direct read out from cache</p>
       {data?.users.map((user) => {
         return (

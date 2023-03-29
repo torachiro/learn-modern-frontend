@@ -10,6 +10,13 @@ module.exports = {
       fontFamily: {
         noto: ['Noto Sans JP', 'sans-serif'],
       },
+      colors: {
+        primary: '#6EC1E4',
+        secondary: '#54595F',
+        text: '#7A7A7A',
+        accent: '#61CE70',
+        'dark-green': '#06bbbc',
+      },
     },
   },
   variants: {
